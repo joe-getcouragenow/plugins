@@ -1,8 +1,16 @@
 # notifications
 
-
+Notificatiosn fire to the OS and then when the user clicks on it they are routed to the right app and to the right page in the app ( aka deep linking).
 
 ## Mobile
+
+There are 2 types:
+- local
+	- fired from the go embed layer and bubbled up to the OS notifications.
+- remote
+	- fired from our Server to the go embed layer and bubbled up to the OS notifications
+- OS
+	- ones fired from the the Apple and Google notifications system. Our Server will fire them.
 
 https://github.com/MaikuB/flutter_local_notifications
 - for mobile
