@@ -29,3 +29,13 @@ See the sub folder
 ## Printing
 
 See the sub folder
+
+## Self Update
+
+See the sub folder
+
+
+## i18n
+
+See the sub folder
+
