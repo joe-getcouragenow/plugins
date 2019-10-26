@@ -22,3 +22,10 @@ github.com/go-flutter-desktop/go-flutter/plugin
 - [timer](timer) - Scheduler. ([code](https://github.com/bus710/gf-plugins/blob/master/plugins/timer/timer.go))
 
 
+## Notifications
+
+https://github.com/MaikuB/flutter_local_notifications
+- for mobile
+- examples: https://github.com/yass0016/nextmed
+- TODO: match the plugin API to wok for Desktop.
+- TODO: get golang notifications lib.
