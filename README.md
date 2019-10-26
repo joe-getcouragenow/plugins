@@ -24,12 +24,7 @@ github.com/go-flutter-desktop/go-flutter/plugin
 
 ## Notifications
 
-https://github.com/MaikuB/flutter_local_notifications
-- for mobile
-- examples: https://github.com/yass0016/nextmed
-	- It has a full scheduler based on calendar which is what we need for the Cal Module.
-- TODO: match the plugin API to wok for Desktop.
-- TODO: get golang notifications lib. Should be easy.
+See the sub folder
 
 ## Printing
 
