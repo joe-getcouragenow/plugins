@@ -45,4 +45,10 @@ See the sub folder
 ## layout
 
 See the sub folder
+## Compile time
+
+- flutter_icons: ^0.3.1
+- flutter_launcher_icons: ^0.7.3
+
+  
 
