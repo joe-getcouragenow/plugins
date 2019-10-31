@@ -7,3 +7,5 @@ Desktop however needs work and its a few different areas and so its broken down 
 - Pdf Generation
 - Pdf Printing
 - Pdf Viewing
+
+Search: https://github.com/PaperCutSoftware/pdfsearch
