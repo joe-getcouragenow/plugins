@@ -10,5 +10,5 @@ https://pub.dev/packages/webview_flutter
 
 ## Desktop
 
+https://github.com/go-flutter-desktop/go-flutter/issues/324
 
-https://github.com/moomerman/Sounds

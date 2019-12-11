@@ -50,5 +50,14 @@ See the sub folder
 - flutter_icons: ^0.3.1
 - flutter_launcher_icons: ^0.7.3
 
+---
+
+
+Google Desktop ones
+
+https://pub.dev/publishers/lesnitsky.dev/packages
+https://github.com/lesnitsky/flutter_desktop_plugins
+andrei.lesnitsky@gmail.com
+t:@lesnitsky
   
 

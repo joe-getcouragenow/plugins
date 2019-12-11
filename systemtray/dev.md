@@ -14,5 +14,9 @@ https://godoc.org/github.com/getlantern/systray
 TO install the system tray
 https://help.backblaze.com/hc/en-us/articles/360018175914-Hide-the-Backblaze-Icon-in-the-System-Tray-Mac-and-Windows-from-the-Command-Line
 
-Icon for it ?
 
+
+
+https://github.com/WireGuard/wireguard-windows/tree/master/manager
+- has IPC pipes client and server for windows.
+- will make it easy to hook the go-flutter to the go-systray !!
