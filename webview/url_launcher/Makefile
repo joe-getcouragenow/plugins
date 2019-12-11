@@ -1,17 +1,15 @@
-# https://github.com/zserge/webview/tree/webview-x
 
 
-
-LIB_NAME=webview
-LIB=github.com/zserge/$(LIB_NAME)
-LIB_BRANCH=webview-x
+LIB_NAME=plugins
+LIB=github.com/winwisely99/$(LIB_NAME)
+LIB_BRANCH=master
 LIB_FSPATH=$(GOPATH)/src/$(LIB)
 
 GO111MODULE=on
 
-SAMPLE_NAME=example
 
-SAMPLE_FSPATH=$(LIB_FSPATH)/$(SAMPLE_NAME)
+SAMPLE_NAME=url_launcher_demo
+SAMPLE_FSPATH=$(LIB_FSPATH)/webview/url_launcher/$(SAMPLE_NAME)
 
 help:  ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
@@ -23,6 +21,11 @@ print: ## print
 	@echo LIB: $(LIB)
 	@echo LIB_BRANCH: $(LIB_BRANCH)
 	@echo LIB_FSPATH: $(LIB_FSPATH)
+	@echo
+
+	@echo
+	@echo SAMPLE_NAME: $(SAMPLE_NAME)
+	@echo SAMPLE_FSPATH: $(SAMPLE_FSPATH)
 	@echo
 
 git-clone:
@@ -40,19 +43,11 @@ code:
 os-dep:
 	# Assume hover make file has ben run 
 	
-	
-### go
-
-go-build: ##go-build
-	cd $(LIB_FSPATH) && make WEBVIEW=cocoa example
-go-buildrun: ##go-buildrun
-	$(MAKE) go-build
-	cd $(SAMPLE_FSPATH) && ./example
-
-
-
 
 ### Flu
+
+flu-new: ## flu-new
+	flutter create $(SAMPLE_NAME)
 
 flu-config: ## flu-config
 	flutter config
@@ -62,11 +57,6 @@ flu-config: ## flu-config
 flu-config-desk: ## flu-config-desk
 	hover -h
 
-flu-print: ## flu-print
-	@echo
-	@echo SAMPLE_NAME: $(SAMPLE_NAME)
-	@echo SAMPLE_FSPATH: $(SAMPLE_FSPATH)
-	@echo
 flu-clean:
 	cd $(SAMPLE_FSPATH) && flutter clean
 flu-update:
