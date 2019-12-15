@@ -1,20 +1,21 @@
-# https://github.com/flutter/plugins
-ifndef $(GOPATH)
-    GOPATH=$(shell go env GOPATH)
-    export GOPATH
-endif
-LIB_NAME=plugins
-LIB=github.com/flutter/$(LIB_NAME)
+
+# https://github.com/iamkishanme/flutter_sentry_crash_reporting
+
+LIB_NAME=flutter_sentry_crash_reporting
+LIB=github.com/iamkishanme/$(LIB_NAME)
 LIB_BRANCH=master
 LIB_FSPATH=$(GOPATH)/src/$(LIB)
 
-SAMPLE_NAME=packages/video_player/video_player/example
+SAMPLE_NAME=
 SAMPLE_FSPATH=$(LIB_FSPATH)/$(SAMPLE_NAME)
 
 
 help:  ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
+sign:
+	# java not there ? /Applications/Android Studio.app/Contents/jre/jdk/Contents/Home/bin/java
+	keytool -genkey -v -keystore ~/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
 
 print: ## print
 	@echo

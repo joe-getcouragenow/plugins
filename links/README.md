@@ -2,6 +2,15 @@
 
 Build a test harness and get it working for Desktop and Mobile.
 
+## TODO
+
+Test : https://github.com/go-flutter-desktop/go-flutter/issues/276
+````
+
+hover run --route "/XXX" 
+````
+
+
 
 ## Deeplinking and URL Schemes
 
@@ -27,7 +36,7 @@ https://github.com/avioli/uni_links
 
 go-flutter:
 - they have started it and need the desktop platform specific code. Should match the Flutter Plugin API calls of Mobile.
-https://github.com/go-flutter-desktop/go-flutter/issues/276
+
 https://github.com/go-flutter-desktop/go-flutter/issues/240
 
 Apple

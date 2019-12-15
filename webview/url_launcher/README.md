@@ -1,5 +1,8 @@
 # url-launcher
 
+
+NOTE: This Demo responds to Url Schemes !!
+
 This will allow us to play videos on Web, Desktop and Mobile.
 
 https://github.com/flutter/plugins/tree/master/packages/url_launcher

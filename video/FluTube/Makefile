@@ -81,6 +81,34 @@ else
 endif
 
 
+### WEB
+
+flu-web-config:
+	# flutter channel ?
+	#flutter channel dev
+	#flutter upgrade
+
+	flutter config --enable-web
+	# turn off any desktop
+	flutter config --no-enable-linux-desktop
+	flutter config --no-enable-macos-desktop
+	flutter config --no-enable-windows-desktop
+flu-web-create: flu-web-config
+	# works 
+	# make sure using new dir.
+	mkdir -p $(SAMPLE_FSPATH)
+	cd $(SAMPLE_FSPATH) && flutter create --web .
+flu-web-run: flu-web-config ## flu-web-run
+	# works
+	# Reload works too :)
+	cd $(SAMPLE_FSPATH) && flutter run -d chrome
+flu-web-build: flu-web-config ## flu-web-build
+	# works :)
+	cd $(SAMPLE_FSPATH) && flutter build web --release
+flu-web-test: flu-web-config ## flu-web-test
+	# works :)
+	cd $(SAMPLE_FSPATH) && flutter test --platform=chrome
+
 
 ### DESK
 
