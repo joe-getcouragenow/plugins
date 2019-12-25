@@ -83,6 +83,8 @@ flu-desk-local-print:
 	cd $(SAMPLE_FSPATH) && hover doctor
 
 
+flu-desk-local-init: ## flu-desk-local-init
+	cd $(SAMPLE_FSPATH) && hover init
 
 flu-desk-local-run: ## flu-desk-local-run
 	# does not use docker
