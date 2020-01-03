@@ -44,7 +44,11 @@ os-dep:
 ### go
 
 go-build: ##go-build
-	cd $(LIB_FSPATH) && make WEBVIEW=cocoa example
+	# https://github.com/zserge/webview/blob/webview-x/script/build.sh
+	cd $(LIB_FSPATH)/script && chmod +x *.sh
+	cd $(LIB_FSPATH)/script && ./build.sh
+
+	#cd $(LIB_FSPATH) && make WEBVIEW=cocoa example
 go-buildrun: ##go-buildrun
 	$(MAKE) go-build
 	cd $(SAMPLE_FSPATH) && ./example
