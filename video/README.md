@@ -9,6 +9,15 @@ SO on Desktop we use a WebView and open a window from the main Flutter Desktop w
 
 ---
 
+Make it a Proper Clustered Server
+https://github.com/zalando/skipper
+https://github.com/zalando-stups/skrop
+- image server that uses skippper
+- easy to add the use it to also transcode youtube videos to mp4.
+
+
+---
+
 https://github.com/ja2375/FluTube
 
 Flutter web is NOW supported for Video
