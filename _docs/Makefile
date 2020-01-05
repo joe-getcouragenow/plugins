@@ -8,5 +8,7 @@ dep:
 	git clone https://github.com/Altinn/docs.git
 
 
-run:
+serve:
 	cd docs && hugo serve
+
+deploy-github:
