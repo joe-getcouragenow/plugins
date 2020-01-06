@@ -12,6 +12,16 @@ The whole point here is that it needs to adapt automatically at runtime
 
 https://iirokrankka.com/2018/01/28/implementing-adaptive-master-detail-layouts/
 
+todo
+- more data on screen
+	- add more test data to the Master and Details so we can see how it behaves with more data
+- when you shrink it, it should show the Detail pane, not the Master pane.
+	- If you are only in the Master pane focus, then prioritize showing the Master pane
+- back button
+	- is not implemented at all right now
+	- web, there is none, because the browser one is used. Is an Ok way to do it i think. Feels more webbby.
+	- desktop & mobile. Needs to show the back button in the right place depending on if the Master Pane is visible or not.
+
 
 ## other stuff
 
