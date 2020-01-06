@@ -17,10 +17,6 @@ Its a good idea to list all the plugins used here across the modules so we can k
 search: 
 github.com/go-flutter-desktop/go-flutter/plugin
 
-## From [bus710/gf-plugins](https://github.com/bus710/gf-plugins)
-
-- [timer](timer) - Scheduler. ([code](https://github.com/bus710/gf-plugins/blob/master/plugins/timer/timer.go))
-
 
 ## Notifications
 
