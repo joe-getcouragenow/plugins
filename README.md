@@ -1,6 +1,6 @@
 # plugins
 
-desktop and mobile plugins
+Web, Desktop (go-flutter ) and Mobile plugins
 
 Its a good idea to list all the plugins used here across the modules so we can keep track of what we use.
 
