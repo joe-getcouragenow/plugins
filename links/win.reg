@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\gcn]
+@="URL:gcn"
+"URL Protocol" = "\"hello\""
+
+[HKEY_CLASSES_ROOT\gcn\shell]
+
+[HKEY_CLASSES_ROOT\gcn\shell\open]
+
+[HKEY_CLASSES_ROOT\gcn\shell\open\command]
+@="\"C:\\Program Files (x86)\\simple\\simple.exe\" \"%1\""
