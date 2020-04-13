@@ -1,7 +1,7 @@
 
 GO_OS 		:= $(shell go env GOOS)
 GO_ARCH		:= $(shell go env GOARCH)
-VERSION = 1.0.0
+
 GIT_VERSION	:= $(shell git describe --tags)
 
 SAMPLE_FSPATH = $(PWD)/example
@@ -53,25 +53,6 @@ flu-desk-run: ## flu-desk-run
 	#cd $(SAMPLE_FSPATH) && hover init
 	cd $(SAMPLE_FSPATH) && hover run
 
-
-### PACK
-# flu-desk-init
-
-flu-desk-init-pack: ## flu-pack
-	sudo rm -rf cd $(SAMPLE_FSPATH)/go/packaging
-	# 1 make pkg
-	cd $(SAMPLE_FSPATH) && hover init-packaging darwin-pkg
-	cd $(SAMPLE_FSPATH) && hover init-packaging linux-deb
-
-	# 2 update packaging data
-	cd $(SAMPLE_FSPATH) && ./update.sh
-
-
-flu-desk-pack-mac: flu-desk-init-pack
-	cd $(SAMPLE_FSPATH) && hover build darwin-pkg --version-number ${VERSION}
-
-flu-desk-pack-deb: flu-desk-init-pack
-	cd $(SAMPLE_FSPATH) && hover build linux-deb --version-number ${VERSION}
 
 ### GEN 
 

@@ -8,8 +8,8 @@ LIB_FSPATH=$(GOPATH)/src/$(LIB)
 GO111MODULE=on
 
 
-SAMPLE_NAME=url_launcher_demo
-SAMPLE_FSPATH=$(LIB_FSPATH)/webview/url_launcher/$(SAMPLE_NAME)
+SAMPLE_NAME=example
+SAMPLE_FSPATH=$(PWD)/url_protocol/$(SAMPLE_NAME)
 
 help:  ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
@@ -59,10 +59,9 @@ flu-config-desk: ## flu-config-desk
 
 flu-clean:
 	cd $(SAMPLE_FSPATH) && flutter clean
+
 flu-update:
 	cd $(SAMPLE_FSPATH) && flutter packages get
-
-
 
 ### WEB
 
@@ -76,23 +75,25 @@ flu-web-config:
 	flutter config --no-enable-linux-desktop
 	flutter config --no-enable-macos-desktop
 	flutter config --no-enable-windows-desktop
+
 flu-web-create: flu-web-config
 	# works 
 	# make sure using new dir.
 	mkdir -p $(SAMPLE_FSPATH)
 	cd $(SAMPLE_FSPATH) && flutter create --web .
+
 flu-web-run: flu-web-config ## flu-web-run
 	# works
 	# Reload works too :)
 	cd $(SAMPLE_FSPATH) && flutter run -d chrome
+
 flu-web-build: flu-web-config ## flu-web-build
 	# works :)
 	cd $(SAMPLE_FSPATH) && flutter build web --release
+
 flu-web-test: flu-web-config ## flu-web-test
 	# works :)
 	cd $(SAMPLE_FSPATH) && flutter test --platform=chrome
-
-
 
 ### DESK
 
@@ -106,7 +107,6 @@ flu-desk-local-run: ## flu-desk-local-run
 flu-desk-local-build: ## flu-desk-local-build
 	# does not use docker
 	cd $(SAMPLE_FSPATH) && hover build darwin
-
 
 flu-desk-build-all: ## flu-desk-build-all
 	$(MAKE) flu-desk-build-clean
@@ -161,7 +161,7 @@ flu-desk-pack-init:
 	# Only needed once.
 
 	# hover init-packaging --help
-
+	
 	#darwin
 	cd $(SAMPLE_FSPATH) && hover init-packaging darwin-bundle
 	cd $(SAMPLE_FSPATH) && hover init-packaging darwin-pkg
@@ -174,6 +174,8 @@ flu-desk-pack-init:
 	cd $(SAMPLE_FSPATH) && hover init-packaging linux-deb
 	cd $(SAMPLE_FSPATH) && hover init-packaging linux-snap
 
+	cd $(SAMPLE_FSPATH) && update.sh
+	
 
 flu-desk-pack:
 
@@ -183,7 +185,7 @@ flu-desk-pack:
 	# darwin (works)
 	# For docker builds on MAC you need to add "/var/folders/wp/" to your docker file sharing.
 	cd $(SAMPLE_FSPATH) && hover build darwin-pkg
-	
+
 	# windows (works)
 	#cd $(SAMPLE_FSPATH) && hover build windows-msi
 
