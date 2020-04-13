@@ -1,90 +1,90 @@
-name: Build
-on:
-  push:
-    branches: 
-      - master
-env:
-  app-name: simple
-  version: 1.0.0 
-jobs:
-  build-packages:
-    name: "Linux Build, Package, Sign and Deploy"
-    runs-on: [ubuntu-latest]
-    env:
-      GOROOT: /usr/local/go
-      GO111MODULE: auto
+# name: Build
+# on:
+#   push:
+#     branches: 
+#       - master
+# env:
+#   app-name: simple
+#   version: 1.0.0 
+# jobs:
+#   build-packages:
+#     name: "Linux Build, Package, Sign and Deploy"
+#     runs-on: [ubuntu-latest]
+#     env:
+#       GOROOT: /usr/local/go
+#       GO111MODULE: auto
       
-    steps:
-      - name: Cache go
-        id: install-go
-        uses: actions/cache@v1
-        with:
-          path: ${GOROOT}
-          key: ${{ runner.os }}-go
+#     steps:
+#       - name: Cache go
+#         id: install-go
+#         uses: actions/cache@v1
+#         with:
+#           path: ${GOROOT}
+#           key: ${{ runner.os }}-go
 
-      - name: Set up Go
-        if: steps.install-go.outputs.cache-hit != 'true'
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.14.1
+#       - name: Set up Go
+#         if: steps.install-go.outputs.cache-hit != 'true'
+#         uses: actions/setup-go@v1
+#         with:
+#           go-version: 1.14.1
 
-      - name: Cache hover
-        id: install-hover
-        uses: actions/cache@v1
-        with:
-          path: $HOME/go
-          key: ${{ runner.os }}-go
+#       - name: Cache hover
+#         id: install-hover
+#         uses: actions/cache@v1
+#         with:
+#           path: $HOME/go
+#           key: ${{ runner.os }}-go
       
-      - name: Set up hover
-        if: steps.install-hover.outputs.cache-hit != 'true'
-        run: |
-            sudo apt-get install libgl1-mesa-dev xorg-dev
-            sudo apt-get install gcc libc6-dev
-            export GOPATH=$HOME/go
-            export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-            go version
-            go get -u github.com/go-flutter-desktop/hover
+#       - name: Set up hover
+#         if: steps.install-hover.outputs.cache-hit != 'true'
+#         run: |
+#             sudo apt-get install libgl1-mesa-dev xorg-dev
+#             sudo apt-get install gcc libc6-dev
+#             export GOPATH=$HOME/go
+#             export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+#             go version
+#             go get -u github.com/go-flutter-desktop/hover
 
-      - name: Cloning repository
-        uses: actions/checkout@v2.0.0
+#       - name: Cloning repository
+#         uses: actions/checkout@v2.0.0
 
-      - uses: subosito/flutter-action@v1.2.0
-        with:
-          channel: beta
+#       - uses: subosito/flutter-action@v1.2.0
+#         with:
+#           channel: beta
 
-      - name: Setting Up Flutter SDK
-        run: flutter pub get
-        working-directory: links/url_protocol/example
+#       - name: Setting Up Flutter SDK
+#         run: flutter pub get
+#         working-directory: links/url_protocol/example
 
-      - name: Packaging Linux, Mac-os, Windows Apps
-        run: |
-          export GOPATH=$HOME/go
-          export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-          hover init-packaging linux-deb
-          hover init-packaging darwin-pkg
-          ./update.sh
-          hover build linux-deb --version-number ${version}
-          hover build darwin-pkg --version-number ${version}
-#          hover init-packaging windows-msi
-#          hover build windows-msi --version-number ${version}
-        working-directory: links/url_protocol/example
+#       - name: Packaging Linux, Mac-os, Windows Apps
+#         run: |
+#           export GOPATH=$HOME/go
+#           export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+#           hover init-packaging linux-deb
+#           hover init-packaging darwin-pkg
+#           ./update.sh
+#           hover build linux-deb --version-number ${version}
+#           hover build darwin-pkg --version-number ${version}
+# #          hover init-packaging windows-msi
+# #          hover build windows-msi --version-number ${version}
+#         working-directory: links/url_protocol/example
 
-      - name: "publish action-artifact zip linux-deb"
-        uses: actions/upload-artifact@v1
-        with:
-          name: linux-deb
-          path: links/url_protocol/example/go/packaging/linux-deb
+#       - name: "publish action-artifact zip linux-deb"
+#         uses: actions/upload-artifact@v1
+#         with:
+#           name: linux-deb
+#           path: links/url_protocol/example/go/packaging/linux-deb
       
-      # - name: "publish action-artifact zip windows-msi"
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: windows-msi
-      #     path: go/build/outputs/windows-msi/
+#       # - name: "publish action-artifact zip windows-msi"
+#       #   uses: actions/upload-artifact@v1
+#       #   with:
+#       #     name: windows-msi
+#       #     path: go/build/outputs/windows-msi/
 
-      - name: "publish action-artifact zip darwin-pkg"
-        uses: actions/upload-artifact@v1
-        with:
-          name: darwin-pkg
-          path: links/url_protocol/example/go/packaging/darwin-pkg
+#       - name: "publish action-artifact zip darwin-pkg"
+#         uses: actions/upload-artifact@v1
+#         with:
+#           name: darwin-pkg
+#           path: links/url_protocol/example/go/packaging/darwin-pkg
         
 
