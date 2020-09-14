@@ -22,3 +22,5 @@ this-flu-create:
 
 this-build:
 	$(MAKE) flu-web-build
+
+this-deploy

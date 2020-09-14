@@ -11,17 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v1
+      - name: Setup go
+        uses: actions/setup-go@v1
+        with:
+          go-version: '1.15.2'
+      - name: Setup flutter
+        uses: subosito/flutter-action@v1
         with:
           channel: 'beta'
-      - uses: actions/checkout@master
+      - name: Checkout code
+        uses: actions/checkout@master
         with:
           fetch-depth: 1
       - name: Run Makefile
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: make all
+      - name: Deploy to github pages
       - uses: erickzanardo/flutter-gh-pages@v1
         with:
           useCanvasKit: true
