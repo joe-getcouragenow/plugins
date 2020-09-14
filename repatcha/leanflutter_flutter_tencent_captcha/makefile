@@ -1,5 +1,14 @@
 # https://github.com/leanflutter/flutter_tencent_captcha
 
+# Has a plugin dependency that we dont want
+# Can make it run off the our golang server as part of mod-account.
+# Send image and answer ( encrypted )
+# On Server, decrypt answer and check they got it.
+# Need a list of 100 animals for images.
+
+# Deektop, web, mobile works but plugin beak s it.
+
+
 LIB=github.com/leanflutter/flutter_tencent_captcha
 LIB_FSPATH=$(GOPATH)/src/$(LIB)
 
