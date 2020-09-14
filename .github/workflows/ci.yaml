@@ -1,4 +1,6 @@
 name: Gh-Pages
+# Deploy to github pages: https://github.com/erickzanardo/flutter-gh-pages
+# Use makefile to build:
 
 on:
   push:
@@ -13,6 +15,13 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'beta'
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Run Makefile
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+        run: make all
       - uses: erickzanardo/flutter-gh-pages@v1
         with:
           useCanvasKit: true
